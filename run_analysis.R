@@ -38,9 +38,9 @@ relevant_data <- cbind(relevant_data, activities_vec)
 # Now let's replace the numeric values with the descriptive name of the activity
 activities_df = read.table('./activity_labels.txt',
                            col.names = c("index", "activity"))
-relevant_data <- merge(relevant_data, activities, 
+relevant_data <- merge(relevant_data, activities_df, 
                        by.x = 'activity_index',
-                       by.y = 'index') %>% select(-activity_index) # Removes the numeric column, 
+                       by.y = 'index', all.x = TRUE) %>% select(-activity_index) # Removes the numeric column, 
                                                                    # leaving us only with the descriptive one
 
 ## Step five - create a new, tidy, dataset
